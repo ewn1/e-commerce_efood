@@ -2,6 +2,7 @@ import Header from './components/Header'
 import { GlobalStyle } from './styles'
 import ProductList from './components/ProductList'
 import star_favorite from './assets/star_favorite.png'
+import Footer from './components/Footer'
 
 const comidaTeste = [
   {
@@ -30,6 +31,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <ProductList products={testeGrid} />
+      <Footer />
     </>
   )
 }
