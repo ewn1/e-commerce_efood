@@ -1,12 +1,12 @@
-import FoodItem from '../../models/FoodItem'
+import RestaurantItem from '../../models/RestaurantItem'
 import Product from '../Product'
 import { ContainerList, List } from './styles'
 
 export type Props = {
-  products: FoodItem[]
+  products: RestaurantItem[]
 }
 
-const ProductList = ({ products }: Props) => (
+const RestaurantList = ({ products }: Props) => (
   <ContainerList className="container">
     <List>
       {products &&
@@ -25,4 +25,4 @@ const ProductList = ({ products }: Props) => (
   </ContainerList>
 )
 
-export default ProductList
+export default RestaurantList

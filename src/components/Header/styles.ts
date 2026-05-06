@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Colors } from '../../styles'
 
-export const HeaderContainer = styled.div`
+export const HeaderHome = styled.div`
   width: 100%;
   height: 384px;
 

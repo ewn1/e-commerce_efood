@@ -1,38 +1,15 @@
-import Header from './components/Header'
 import { GlobalStyle } from './styles'
-import ProductList from './components/ProductList'
-import star_favorite from './assets/star_favorite.png'
 import Footer from './components/Footer'
-
-const comidaTeste = [
-  {
-    id: 1,
-    title: 'Tavola Redonda',
-    description: 'Cantina Italiana',
-    infos: ['Destaque da semana', 'italiano'],
-    image: 'https://placehold.co/472x217',
-    score: 4.8,
-    icon: star_favorite,
-  },
-]
-
-const testeGrid = [
-  ...comidaTeste,
-  ...comidaTeste,
-  ...comidaTeste,
-  ...comidaTeste,
-  ...comidaTeste,
-  ...comidaTeste,
-]
+import { BrowserRouter } from 'react-router-dom'
+import Rotas from './routes'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <Header />
-      <ProductList products={testeGrid} />
+      <Rotas />
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 
