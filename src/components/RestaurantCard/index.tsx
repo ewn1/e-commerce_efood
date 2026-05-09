@@ -1,10 +1,10 @@
 import Tag from '../Tag'
 import {
-  Card,
-  CardHeader,
-  Description,
-  InfoContainer,
+  RestaurantCardContainer,
   TagsContainer,
+  RestaurantInfoContainer,
+  RestaurantCardInfos,
+  RestaurantCardDescription,
 } from './styles'
 
 type Props = {
@@ -16,26 +16,33 @@ type Props = {
   description: string
 }
 
-const Product = ({ infos, image, title, score, icon, description }: Props) => (
-  <Card>
+const RestaurantCard = ({
+  infos,
+  image,
+  title,
+  score,
+  icon,
+  description,
+}: Props) => (
+  <RestaurantCardContainer>
     <img src={image} alt={title} />
     <TagsContainer>
       {infos.map((info) => (
         <Tag key={info}>{info}</Tag>
       ))}
     </TagsContainer>
-    <InfoContainer>
-      <CardHeader>
+    <RestaurantInfoContainer>
+      <RestaurantCardInfos>
         <h3>{title}</h3>
         <div>
           <p>{score}</p>
           <img src={icon} alt="estrela" />
         </div>
-      </CardHeader>
-      <Description>{description}</Description>
+      </RestaurantCardInfos>
+      <RestaurantCardDescription>{description}</RestaurantCardDescription>
       <Tag size="medium">Saiba Mais</Tag>
-    </InfoContainer>
-  </Card>
+    </RestaurantInfoContainer>
+  </RestaurantCardContainer>
 )
 
-export default Product
+export default RestaurantCard

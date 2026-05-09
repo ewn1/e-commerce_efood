@@ -64,7 +64,7 @@ const restaurantes: RestaurantItem[] = [
 const Home = () => (
   <>
     <Header />
-    <RestaurantList products={restaurantes} />
+    <RestaurantList restaurants={restaurantes} />
   </>
 )
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Colors } from '../../styles'
 
-export const Card = styled.div`
+export const RestaurantCardContainer = styled.div`
   width: 100%;
   background-color: ${Colors.branco};
   border: 1px solid ${Colors.salmao};
@@ -26,7 +26,7 @@ export const TagsContainer = styled.div`
   gap: 8px;
 `
 
-export const InfoContainer = styled.div`
+export const RestaurantInfoContainer = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@ export const InfoContainer = styled.div`
   align-items: flex-start;
 `
 
-export const CardHeader = styled.div`
+export const RestaurantCardInfos = styled.div`
   width: 100%;
   font-size: 18px;
   font-weight: bold;
@@ -56,10 +56,11 @@ export const CardHeader = styled.div`
   }
 `
 
-export const Description = styled.p`
+export const RestaurantCardDescription = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 16px;
   color: ${Colors.salmao};
   text-align: justify;
+  line-height: 22px;
 `

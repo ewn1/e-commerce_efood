@@ -1,28 +1,28 @@
 import RestaurantItem from '../../models/RestaurantItem'
-import Product from '../Product'
-import { ContainerList, List } from './styles'
+import RestaurantCard from '../RestaurantCard'
+import { RestaurantListContainer, HomeList } from './styles'
 
 export type Props = {
-  products: RestaurantItem[]
+  restaurants: RestaurantItem[]
 }
 
-const RestaurantList = ({ products }: Props) => (
-  <ContainerList className="container">
-    <List>
-      {products &&
-        products.map((product) => (
-          <Product
-            key={product.id}
-            infos={product.infos}
-            image={product.image}
-            title={product.title}
-            score={product.score}
-            icon={product.icon}
-            description={product.description}
+const RestaurantList = ({ restaurants }: Props) => (
+  <RestaurantListContainer className="container">
+    <HomeList>
+      {restaurants &&
+        restaurants.map((restaurant) => (
+          <RestaurantCard
+            key={restaurant.id}
+            infos={restaurant.infos}
+            image={restaurant.image}
+            title={restaurant.title}
+            score={restaurant.score}
+            icon={restaurant.icon}
+            description={restaurant.description}
           />
         ))}
-    </List>
-  </ContainerList>
+    </HomeList>
+  </RestaurantListContainer>
 )
 
 export default RestaurantList
