@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Tag from '../Tag'
 import {
   RestaurantCardContainer,
@@ -8,6 +10,7 @@ import {
 } from './styles'
 
 type Props = {
+  id: number
   infos: string[]
   image: string
   title: string
@@ -17,6 +20,7 @@ type Props = {
 }
 
 const RestaurantCard = ({
+  id,
   infos,
   image,
   title,
@@ -40,7 +44,9 @@ const RestaurantCard = ({
         </div>
       </RestaurantCardInfos>
       <RestaurantCardDescription>{description}</RestaurantCardDescription>
-      <Tag size="medium">Saiba Mais</Tag>
+      <Link to={`/restaurantes/${id}`}>
+        <Tag size="medium">Saiba Mais</Tag>
+      </Link>
     </RestaurantInfoContainer>
   </RestaurantCardContainer>
 )

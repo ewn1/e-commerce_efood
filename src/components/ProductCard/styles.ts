@@ -26,6 +26,7 @@ export const ProductCardDescription = styled.p`
   margin-top: 8px;
   margin-bottom: 8px;
   line-height: 22px;
+  text-align: justify;
 `
 
 export const ProductCardButton = styled.button`

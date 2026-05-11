@@ -12,6 +12,7 @@ const RestaurantList = ({ restaurants }: Props) => (
       {restaurants &&
         restaurants.map((restaurant) => (
           <RestaurantCard
+            id={restaurant.id}
             key={restaurant.id}
             infos={restaurant.infos}
             image={restaurant.image}

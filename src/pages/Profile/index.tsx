@@ -1,57 +1,32 @@
+import { useParams } from 'react-router-dom'
+
 import ProductList from '../../components/ProductList'
 import HeaderProfile from '../../components/HeaderProfile'
-import FoodItem from '../../models/FoodItem'
+import BannerProfile from '../../components/BannerProfile'
+import restaurantes from '../../mocks/restaurantes'
 
-const restaurantMenu: FoodItem[] = [
-  {
-    id: 1,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-  {
-    id: 2,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-  {
-    id: 3,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-  {
-    id: 4,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-  {
-    id: 5,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-  {
-    id: 6,
-    image: 'https://placehold.co/304x167',
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-  },
-]
+const RestaurantProfile = () => {
+  const { id } = useParams()
 
-const RestaurantProfile = () => (
-  <>
-    <HeaderProfile />
-    <ProductList products={restaurantMenu} />
-  </>
-)
+  const restaurantSelected = restaurantes.find(
+    (restaurant) => restaurant.id === Number(id),
+  )
+
+  if (!restaurantSelected) {
+    return <h3>Restaurante não encontrado, por favor, tente novamente</h3>
+  }
+
+  return (
+    <>
+      <HeaderProfile />
+      <BannerProfile
+        image={restaurantSelected.image}
+        category={restaurantSelected.infos[0]}
+        title={restaurantSelected.title}
+      />
+      <ProductList products={restaurantSelected.menu || []} />
+    </>
+  )
+}
 
 export default RestaurantProfile
