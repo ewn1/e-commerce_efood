@@ -1,4 +1,4 @@
-import FoodItem from '../../models/FoodItem'
+import { FoodItem } from '../../types'
 import ProductCard from '../ProductCard'
 import { ProductListContainer, ProfileList } from './styles'
 
@@ -13,9 +13,9 @@ const ProductList = ({ products }: Props) => (
         products.map((product) => (
           <ProductCard
             key={product.id}
-            image={product.image}
-            title={product.title}
-            description={product.description}
+            image={product.foto}
+            title={product.nome}
+            description={product.descricao}
           />
         ))}
     </ProfileList>

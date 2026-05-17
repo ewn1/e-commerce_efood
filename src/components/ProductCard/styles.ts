@@ -16,6 +16,10 @@ export const ProductCardContainer = styled.div`
     object-fit: cover;
     height: 167px;
   }
+
+  button {
+    margin-top: auto;
+  }
 `
 export const ProductCardTitle = styled.h3`
   margin-top: 8px;

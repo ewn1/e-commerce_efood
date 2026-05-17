@@ -32,6 +32,10 @@ export const RestaurantInfoContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
   align-items: flex-start;
+
+  a {
+    margin-top: auto;
+  }
 `
 
 export const RestaurantCardInfos = styled.div`

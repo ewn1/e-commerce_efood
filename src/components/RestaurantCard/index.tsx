@@ -9,41 +9,43 @@ import {
   RestaurantCardDescription,
 } from './styles'
 
+import icon from '../../assets/star_favorite.png'
+
 type Props = {
   id: number
-  infos: string[]
-  image: string
-  title: string
-  score: number
-  icon: string
-  description: string
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
 }
 
 const RestaurantCard = ({
   id,
-  infos,
-  image,
-  title,
-  score,
-  icon,
-  description,
+  titulo,
+  destacado,
+  tipo,
+  avaliacao,
+  descricao,
+  capa,
 }: Props) => (
   <RestaurantCardContainer>
-    <img src={image} alt={title} />
+    <img src={capa} alt={titulo} />
     <TagsContainer>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
+      {destacado && <Tag size="small">Destaque</Tag>}
+      <Tag size="small">{tipo}</Tag>
     </TagsContainer>
+
     <RestaurantInfoContainer>
       <RestaurantCardInfos>
-        <h3>{title}</h3>
+        <h3>{titulo}</h3>
         <div>
-          <p>{score}</p>
+          <p>{avaliacao}</p>
           <img src={icon} alt="estrela" />
         </div>
       </RestaurantCardInfos>
-      <RestaurantCardDescription>{description}</RestaurantCardDescription>
+      <RestaurantCardDescription>{descricao}</RestaurantCardDescription>
       <Link to={`/restaurantes/${id}`}>
         <Tag size="medium">Saiba Mais</Tag>
       </Link>
