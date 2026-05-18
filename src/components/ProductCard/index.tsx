@@ -9,14 +9,15 @@ type Props = {
   image: string
   title: string
   description: string
+  onMoreDetails: () => void
 }
 
-const ProductCard = ({ image, title, description }: Props) => (
+const ProductCard = ({ image, title, description, onMoreDetails }: Props) => (
   <ProductCardContainer>
     <img src={image} />
     <ProductCardTitle>{title}</ProductCardTitle>
     <ProductCardDescription>{description}</ProductCardDescription>
-    <ProductCardButton>Adicionar ao carrinho</ProductCardButton>
+    <ProductCardButton onClick={onMoreDetails}>Mais detalhes</ProductCardButton>
   </ProductCardContainer>
 )
 
