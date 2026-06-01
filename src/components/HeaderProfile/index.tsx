@@ -2,14 +2,30 @@ import logo from '../../assets/logo.png'
 import bannerHome from '../../assets/bannerHome.png'
 import { HeaderProfileContainer, HeaderProfileContent } from './styles'
 
-const HeaderProfile = () => (
-  <HeaderProfileContainer style={{ backgroundImage: `url(${bannerHome})` }}>
-    <HeaderProfileContent className="container">
-      <p>Restaurantes</p>
-      <img src={logo} alt="eFood" />
-      <p>0 produto(s) no carrinho</p>
-    </HeaderProfileContent>
-  </HeaderProfileContainer>
-)
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store'
+import { open } from '../../store/reducers/cart'
+import { Link } from 'react-router-dom'
+
+const HeaderProfile = () => {
+  const dispatch = useDispatch()
+  const items = useSelector((state: RootState) => state.cart.items)
+
+  return (
+    <HeaderProfileContainer style={{ backgroundImage: `url(${bannerHome})` }}>
+      <HeaderProfileContent className="container">
+        <Link to="/">
+          <a>Restaurantes</a>
+        </Link>
+        <Link to="/">
+          <img src={logo} alt="eFood" />
+        </Link>
+        <span onClick={() => dispatch(open())}>
+          {items.length} produto(s) no carrinho
+        </span>
+      </HeaderProfileContent>
+    </HeaderProfileContainer>
+  )
+}
 
 export default HeaderProfile

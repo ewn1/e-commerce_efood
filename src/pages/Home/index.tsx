@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import RestaurantList from '../../components/RestaurantList'
-import restaurantes from '../../mocks/restaurantes'
 import { RestaurantItem } from '../../types'
 
 const Home = () => {

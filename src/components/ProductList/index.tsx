@@ -11,12 +11,25 @@ import {
 import closeIcon from '../../assets/close.png'
 import { useState } from 'react'
 
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+
 export type Props = {
   products: FoodItem[]
 }
 
 const ProductList = ({ products }: Props) => {
   const [modalVisible, setModalVisible] = useState<FoodItem | null>(null)
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    if (modalVisible) {
+      dispatch(add(modalVisible))
+      dispatch(open())
+      setModalVisible(null)
+    }
+  }
 
   return (
     <ProductListContainer className="container">
@@ -40,7 +53,7 @@ const ProductList = ({ products }: Props) => {
             <h3>{modalVisible?.nome}</h3>
             <p>{modalVisible?.descricao}</p>
             <p>Porção: {modalVisible?.porcao}</p>
-            <button>
+            <button onClick={addToCart}>
               Adicionar ao Carrinho - R${' '}
               {modalVisible?.preco.toFixed(2).replace('.', ',')}
             </button>

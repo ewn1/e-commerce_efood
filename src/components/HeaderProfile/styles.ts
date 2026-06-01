@@ -13,4 +13,13 @@ export const HeaderProfileContent = styled.div`
   padding: 64px 0;
   font-weight: bold;
   color: ${Colors.salmao};
+
+  a {
+    color: ${Colors.salmao};
+    text-decoration: none;
+  }
+
+  span {
+    cursor: pointer;
+  }
 `
