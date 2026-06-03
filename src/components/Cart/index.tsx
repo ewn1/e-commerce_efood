@@ -28,7 +28,7 @@ const Cart = () => {
       <SideBar>
         <ul>
           {items.map((item) => (
-            <CartItem>
+            <CartItem key={item.id}>
               <img src={item.foto} alt={item.nome} />
               <div>
                 <h3>{item.nome}</h3>

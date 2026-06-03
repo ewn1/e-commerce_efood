@@ -14,9 +14,7 @@ const HeaderProfile = () => {
   return (
     <HeaderProfileContainer style={{ backgroundImage: `url(${bannerHome})` }}>
       <HeaderProfileContent className="container">
-        <Link to="/">
-          <a>Restaurantes</a>
-        </Link>
+        <Link to="/">Restaurantes</Link>
         <Link to="/">
           <img src={logo} alt="eFood" />
         </Link>

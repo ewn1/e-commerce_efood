@@ -47,24 +47,26 @@ const ProductList = ({ products }: Props) => {
       </ProfileList>
       <Modal className={modalVisible ? 'visible' : ''}>
         <Overlay onClick={() => setModalVisible(null)} />
-        <ModalContainer>
-          <img src={modalVisible?.foto} alt={modalVisible?.nome} />
-          <div>
-            <h3>{modalVisible?.nome}</h3>
-            <p>{modalVisible?.descricao}</p>
-            <p>Porção: {modalVisible?.porcao}</p>
-            <button onClick={addToCart}>
-              Adicionar ao Carrinho - R${' '}
-              {modalVisible?.preco.toFixed(2).replace('.', ',')}
-            </button>
-          </div>
-          <img
-            src={closeIcon}
-            alt="Fechar"
-            className="close-button"
-            onClick={() => setModalVisible(null)}
-          />
-        </ModalContainer>
+        {modalVisible && (
+          <ModalContainer>
+            <img src={modalVisible.foto} alt={modalVisible.nome} />
+            <div>
+              <h3>{modalVisible.nome}</h3>
+              <p>{modalVisible.descricao}</p>
+              <p>Porção: {modalVisible.porcao}</p>
+              <button onClick={addToCart}>
+                Adicionar ao Carrinho - R${' '}
+                {modalVisible.preco.toFixed(2).replace('.', ',')}
+              </button>
+            </div>
+            <img
+              src={closeIcon}
+              alt="Fechar"
+              className="close-button"
+              onClick={() => setModalVisible(null)}
+            />
+          </ModalContainer>
+        )}
       </Modal>
     </ProductListContainer>
   )
