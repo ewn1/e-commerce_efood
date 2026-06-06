@@ -15,16 +15,22 @@ export const ProductCardContainer = styled.div`
     max-width: 100%;
     object-fit: cover;
     height: 167px;
+
+    @media (max-width: 768px) {
+      height: 200px;
+    }
   }
 
   button {
     margin-top: auto;
   }
 `
+
 export const ProductCardTitle = styled.h3`
   margin-top: 8px;
   font-weight: bold;
 `
+
 export const ProductCardDescription = styled.p`
   font-size: 14px;
   margin-top: 8px;

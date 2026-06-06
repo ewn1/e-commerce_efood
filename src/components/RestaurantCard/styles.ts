@@ -15,6 +15,10 @@ export const RestaurantCardContainer = styled.div`
     max-width: 100%;
     object-fit: cover;
     height: 217px;
+
+    @media (max-width: 768px) {
+      height: 200px;
+    }
   }
 `
 
@@ -48,6 +52,10 @@ export const RestaurantCardInfos = styled.div`
   align-items: center;
   margin-bottom: 16px;
 
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
+
   div {
     display: flex;
     align-items: center;
@@ -66,5 +74,4 @@ export const RestaurantCardDescription = styled.p`
   margin-bottom: 16px;
   color: ${Colors.salmao};
   text-align: justify;
-  line-height: 22px;
 `

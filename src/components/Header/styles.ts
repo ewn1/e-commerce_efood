@@ -11,18 +11,32 @@ export const HeaderHome = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    height: 280px;
+  }
 `
 
 export const Logo = styled.img`
   margin-top: 40px;
   width: 125px;
   height: 58px;
+
+  @media (max-width: 768px) {
+    margin-top: 24px;
+  }
 `
 
 export const Titulo = styled.h1`
   font-size: 36px;
   font-weight: bold;
   color: ${Colors.salmao};
-  margin-top: 138.5px;
+  margin-top: 80px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    margin-top: 40px;
+    padding: 0 16px;
+  }
 `

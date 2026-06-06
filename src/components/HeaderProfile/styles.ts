@@ -4,6 +4,10 @@ import { Colors } from '../../styles'
 export const HeaderProfileContainer = styled.div`
   width: 100%;
   height: 186px;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `
 
 export const HeaderProfileContent = styled.div`
@@ -21,5 +25,18 @@ export const HeaderProfileContent = styled.div`
 
   span {
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+    text-align: center;
+
+    span {
+      display: block;
+      max-width: 160px;
+      line-height: 1.4;
+    }
   }
 `

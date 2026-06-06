@@ -3,6 +3,10 @@ import { Colors } from '../../styles'
 
 export const ProductListContainer = styled.div`
   padding: 56px 0 120px;
+
+  @media (max-width: 768px) {
+    padding: 32px 0 60px;
+  }
 `
 
 export const ProfileList = styled.ul`
@@ -12,6 +16,15 @@ export const ProfileList = styled.ul`
   row-gap: 32px;
   width: 100%;
   max-width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
 `
 
 export const Modal = styled.div`
@@ -23,7 +36,8 @@ export const Modal = styled.div`
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 5;
+  padding: 16px;
 
   &.visible {
     display: flex;
@@ -50,10 +64,22 @@ export const ModalContainer = styled.div`
   display: flex;
   gap: 24px;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 24px 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
   > img {
     width: 280px;
     height: 280px;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 200px;
+    }
   }
 
   div {
@@ -83,6 +109,11 @@ export const ModalContainer = styled.div`
       cursor: pointer;
       margin-top: auto;
       width: fit-content;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-top: 8px;
+      }
     }
   }
 
