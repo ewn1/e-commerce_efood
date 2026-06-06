@@ -1,17 +1,17 @@
 import bannerHome from '../../assets/bannerHome.png'
 import logo from '../../assets/logo.png'
-import { HeaderHome, Logo, Titulo } from './styles'
+import * as S from './styles'
 
 const Header = () => (
-  <HeaderHome style={{ backgroundImage: `url(${bannerHome})` }}>
+  <S.HeaderHome style={{ backgroundImage: `url(${bannerHome})` }}>
     <div>
-      <Logo src={logo} alt="eFood" />
-      <Titulo>
+      <S.Logo src={logo} alt="eFood" />
+      <S.Titulo>
         Viva experiências gastronômicas
         <br /> no conforto da sua casa
-      </Titulo>
+      </S.Titulo>
     </div>
-  </HeaderHome>
+  </S.HeaderHome>
 )
 
 export default Header

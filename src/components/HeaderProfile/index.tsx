@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 import logo from '../../assets/logo.png'
 import bannerHome from '../../assets/bannerHome.png'
-import { HeaderProfileContainer, HeaderProfileContent } from './styles'
 
-import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { open } from '../../store/reducers/cart'
-import { Link } from 'react-router-dom'
+
+import * as S from './styles'
 
 const HeaderProfile = () => {
   const dispatch = useDispatch()
   const items = useSelector((state: RootState) => state.cart.items)
 
   return (
-    <HeaderProfileContainer style={{ backgroundImage: `url(${bannerHome})` }}>
-      <HeaderProfileContent className="container">
+    <S.HeaderProfileContainer style={{ backgroundImage: `url(${bannerHome})` }}>
+      <S.HeaderProfileContent className="container">
         <Link to="/">Restaurantes</Link>
         <Link to="/">
           <img src={logo} alt="eFood" />
@@ -21,8 +23,8 @@ const HeaderProfile = () => {
         <span onClick={() => dispatch(open())}>
           {items.length} produto(s) no carrinho
         </span>
-      </HeaderProfileContent>
-    </HeaderProfileContainer>
+      </S.HeaderProfileContent>
+    </S.HeaderProfileContainer>
   )
 }
 

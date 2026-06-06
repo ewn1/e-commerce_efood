@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Tag from '../Tag'
-import {
-  RestaurantCardContainer,
-  TagsContainer,
-  RestaurantInfoContainer,
-  RestaurantCardInfos,
-  RestaurantCardDescription,
-} from './styles'
+import * as S from './styles'
 
 import icon from '../../assets/star_favorite.png'
 
@@ -30,27 +24,27 @@ const RestaurantCard = ({
   descricao,
   capa,
 }: Props) => (
-  <RestaurantCardContainer>
+  <S.RestaurantCardContainer>
     <img src={capa} alt={titulo} />
-    <TagsContainer>
+    <S.TagsContainer>
       {destacado && <Tag size="small">Destaque</Tag>}
       <Tag size="small">{tipo}</Tag>
-    </TagsContainer>
+    </S.TagsContainer>
 
-    <RestaurantInfoContainer>
-      <RestaurantCardInfos>
+    <S.RestaurantInfoContainer>
+      <S.RestaurantCardInfos>
         <h3>{titulo}</h3>
         <div>
           <p>{avaliacao}</p>
           <img src={icon} alt="estrela" />
         </div>
-      </RestaurantCardInfos>
-      <RestaurantCardDescription>{descricao}</RestaurantCardDescription>
+      </S.RestaurantCardInfos>
+      <S.RestaurantCardDescription>{descricao}</S.RestaurantCardDescription>
       <Link to={`/restaurantes/${id}`}>
         <Tag size="medium">Saiba Mais</Tag>
       </Link>
-    </RestaurantInfoContainer>
-  </RestaurantCardContainer>
+    </S.RestaurantInfoContainer>
+  </S.RestaurantCardContainer>
 )
 
 export default RestaurantCard

@@ -1,18 +1,14 @@
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { add, open } from '../../store/reducers/cart'
+
 import { FoodItem } from '../../types'
 import ProductCard from '../ProductCard'
-import {
-  Modal,
-  ModalContainer,
-  Overlay,
-  ProductListContainer,
-  ProfileList,
-} from './styles'
 
 import closeIcon from '../../assets/close.png'
-import { useState } from 'react'
 
-import { useDispatch } from 'react-redux'
-import { add, open } from '../../store/reducers/cart'
+import * as S from './styles'
 
 export type Props = {
   products: FoodItem[]
@@ -32,8 +28,8 @@ const ProductList = ({ products }: Props) => {
   }
 
   return (
-    <ProductListContainer className="container">
-      <ProfileList>
+    <S.ProductListContainer className="container">
+      <S.ProfileList>
         {products &&
           products.map((product) => (
             <ProductCard
@@ -44,11 +40,11 @@ const ProductList = ({ products }: Props) => {
               onMoreDetails={() => setModalVisible(product)}
             />
           ))}
-      </ProfileList>
-      <Modal className={modalVisible ? 'visible' : ''}>
-        <Overlay onClick={() => setModalVisible(null)} />
+      </S.ProfileList>
+      <S.Modal className={modalVisible ? 'visible' : ''}>
+        <S.Overlay onClick={() => setModalVisible(null)} />
         {modalVisible && (
-          <ModalContainer>
+          <S.ModalContainer>
             <img src={modalVisible.foto} alt={modalVisible.nome} />
             <div>
               <h3>{modalVisible.nome}</h3>
@@ -65,10 +61,10 @@ const ProductList = ({ products }: Props) => {
               className="close-button"
               onClick={() => setModalVisible(null)}
             />
-          </ModalContainer>
+          </S.ModalContainer>
         )}
-      </Modal>
-    </ProductListContainer>
+      </S.Modal>
+    </S.ProductListContainer>
   )
 }
 

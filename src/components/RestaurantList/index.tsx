@@ -1,14 +1,14 @@
 import { RestaurantItem } from '../../types'
 import RestaurantCard from '../RestaurantCard'
-import { RestaurantListContainer, HomeList } from './styles'
+import * as S from './styles'
 
 export type Props = {
   restaurants: RestaurantItem[]
 }
 
 const RestaurantList = ({ restaurants }: Props) => (
-  <RestaurantListContainer className="container">
-    <HomeList>
+  <S.RestaurantListContainer className="container">
+    <S.HomeList>
       {restaurants &&
         restaurants.map((restaurant) => (
           <RestaurantCard
@@ -22,8 +22,8 @@ const RestaurantList = ({ restaurants }: Props) => (
             capa={restaurant.capa}
           />
         ))}
-    </HomeList>
-  </RestaurantListContainer>
+    </S.HomeList>
+  </S.RestaurantListContainer>
 )
 
 export default RestaurantList

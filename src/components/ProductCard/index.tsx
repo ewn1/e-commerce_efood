@@ -1,9 +1,4 @@
-import {
-  ProductCardContainer,
-  ProductCardTitle,
-  ProductCardDescription,
-  ProductCardButton,
-} from './styles'
+import * as S from './styles'
 
 type Props = {
   image: string
@@ -13,12 +8,14 @@ type Props = {
 }
 
 const ProductCard = ({ image, title, description, onMoreDetails }: Props) => (
-  <ProductCardContainer>
+  <S.ProductCardContainer>
     <img src={image} />
-    <ProductCardTitle>{title}</ProductCardTitle>
-    <ProductCardDescription>{description}</ProductCardDescription>
-    <ProductCardButton onClick={onMoreDetails}>Mais detalhes</ProductCardButton>
-  </ProductCardContainer>
+    <S.ProductCardTitle>{title}</S.ProductCardTitle>
+    <S.ProductCardDescription>{description}</S.ProductCardDescription>
+    <S.ProductCardButton onClick={onMoreDetails}>
+      Mais detalhes
+    </S.ProductCardButton>
+  </S.ProductCardContainer>
 )
 
 export default ProductCard

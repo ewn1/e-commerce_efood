@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import RestaurantList from '../../components/RestaurantList'
 import { RestaurantItem } from '../../types'
+import Loader from '../../components/Loader'
 
 const Home = () => {
   const [restaurants, setRestaurants] = useState<RestaurantItem[]>([])
@@ -15,7 +16,11 @@ const Home = () => {
   return (
     <>
       <Header />
-      <RestaurantList restaurants={restaurants} />
+      {restaurants.length === 0 ? (
+        <Loader />
+      ) : (
+        <RestaurantList restaurants={restaurants} />
+      )}
     </>
   )
 }

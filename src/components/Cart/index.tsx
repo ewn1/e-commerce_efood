@@ -4,25 +4,14 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { IMaskInput } from 'react-imask'
 
-import deleteIcon from '../../assets/deleteIcon.png'
 import { RootState } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
+import { close, remove, clear } from '../../store/reducers/cart'
 
 import { usePurchaseMutation } from '../../services/api'
 
-import {
-  CartContainer,
-  CartItem,
-  Overlay,
-  SideBar,
-  CartButton,
-  TotalPrice,
-  InputGroup,
-  DeliveryForm,
-  CartButtonGroup,
-  PaymentForm,
-  SuccessMessageContainer,
-} from './styles'
+import deleteIcon from '../../assets/deleteIcon.png'
+
+import * as S from './styles'
 
 const Cart = () => {
   const [step, setStep] = useState<'cart' | 'delivery' | 'payment' | 'success'>(
@@ -58,16 +47,14 @@ const Cart = () => {
     },
     validationSchema: Yup.object({
       receiver: Yup.string()
-        .min(5, 'Nome muito curto')
+        .min(5, 'O nome precisa ter no mínimo 5 caracteres')
         .required('O campo é obrigatório'),
       description: Yup.string().required('O campo é obrigatório'),
       city: Yup.string().required('O campo é obrigatório'),
       zipCode: Yup.string()
         .min(9, 'CEP inválido')
         .required('O campo é obrigatório'),
-      number: Yup.number()
-        .typeError('Invalido')
-        .required('O campo é obrigatório'),
+      number: Yup.number().required('O campo é obrigatório'),
       complement: Yup.string(),
 
       cardName: Yup.string().when((values, schema) =>
@@ -120,6 +107,7 @@ const Cart = () => {
         setOrderId(response.orderId || response.id)
         form.resetForm()
         setStep('success')
+        dispatch(clear())
       } catch (error) {
         alert(
           'Houve um erro ao processar o seu pedido. Por favor, verifique os dados e tente novamente.',
@@ -157,9 +145,9 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={() => dispatch(close())} />
-      <SideBar>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={() => dispatch(close())} />
+      <S.SideBar>
         <form onSubmit={form.handleSubmit}>
           {step === 'cart' && (
             <>
@@ -172,7 +160,7 @@ const Cart = () => {
                 <>
                   <ul>
                     {items.map((item) => (
-                      <CartItem key={item.id}>
+                      <S.CartItem key={item.id}>
                         <img src={item.foto} alt={item.nome} />
                         <div>
                           <h3>{item.nome}</h3>
@@ -185,25 +173,28 @@ const Cart = () => {
                             alt="Remover produto"
                           />
                         </div>
-                      </CartItem>
+                      </S.CartItem>
                     ))}
                   </ul>
-                  <TotalPrice>
+                  <S.TotalPrice>
                     <span>Valor Total:</span>
                     <span>R$ {formattedTotal}</span>
-                  </TotalPrice>
-                  <CartButton type="button" onClick={() => setStep('delivery')}>
+                  </S.TotalPrice>
+                  <S.CartButton
+                    type="button"
+                    onClick={() => setStep('delivery')}
+                  >
                     Continuar com a entrega
-                  </CartButton>
+                  </S.CartButton>
                 </>
               )}
             </>
           )}
 
           {step === 'delivery' && (
-            <DeliveryForm>
+            <S.DeliveryForm>
               <h4>Entrega</h4>
-              <InputGroup>
+              <S.InputGroup>
                 <label htmlFor="receiver">Quem irá receber</label>
                 <input
                   type="text"
@@ -214,8 +205,8 @@ const Cart = () => {
                   onBlur={form.handleBlur}
                   className={checkInputHasError('receiver') ? 'error' : ''}
                 />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="description">Endereço</label>
                 <input
                   type="text"
@@ -226,8 +217,8 @@ const Cart = () => {
                   onBlur={form.handleBlur}
                   className={checkInputHasError('description') ? 'error' : ''}
                 />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="city">Cidade</label>
                 <input
                   type="text"
@@ -238,9 +229,9 @@ const Cart = () => {
                   onBlur={form.handleBlur}
                   className={checkInputHasError('city') ? 'error' : ''}
                 />
-              </InputGroup>
+              </S.InputGroup>
               <div className="row-inputs">
-                <InputGroup>
+                <S.InputGroup>
                   <label htmlFor="zipCode">CEP</label>
                   <IMaskInput
                     type="text"
@@ -253,8 +244,8 @@ const Cart = () => {
                     mask="00000-000"
                     lazy={false}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="number">Número</label>
                   <input
                     type="text"
@@ -265,10 +256,10 @@ const Cart = () => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError('number') ? 'error' : ''}
                   />
-                </InputGroup>
+                </S.InputGroup>
               </div>
 
-              <InputGroup>
+              <S.InputGroup>
                 <label htmlFor="complement">Complemento (opcional)</label>
                 <input
                   type="text"
@@ -278,23 +269,23 @@ const Cart = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
-              </InputGroup>
+              </S.InputGroup>
 
-              <CartButtonGroup>
-                <CartButton type="button" onClick={GoToPayment}>
+              <S.CartButtonGroup>
+                <S.CartButton type="button" onClick={GoToPayment}>
                   Continuar com o pagamento
-                </CartButton>
-                <CartButton type="button" onClick={() => setStep('cart')}>
+                </S.CartButton>
+                <S.CartButton type="button" onClick={() => setStep('cart')}>
                   Voltar para o carrinho
-                </CartButton>
-              </CartButtonGroup>
-            </DeliveryForm>
+                </S.CartButton>
+              </S.CartButtonGroup>
+            </S.DeliveryForm>
           )}
 
           {step === 'payment' && (
-            <PaymentForm>
+            <S.PaymentForm>
               <h4>Pagamento - Valor a pagar R$ {formattedTotal}</h4>
-              <InputGroup>
+              <S.InputGroup>
                 <label htmlFor="cardName">Nome no cartão</label>
                 <input
                   type="text"
@@ -305,9 +296,9 @@ const Cart = () => {
                   onBlur={form.handleBlur}
                   className={checkInputHasError('cardName') ? 'error' : ''}
                 />
-              </InputGroup>
+              </S.InputGroup>
               <div className="row-inputs">
-                <InputGroup>
+                <S.InputGroup>
                   <label htmlFor="cardNumber">Número do cartão</label>
                   <IMaskInput
                     className={`cardNumberInput ${checkInputHasError('cardNumber') ? 'error' : ''}`}
@@ -322,8 +313,8 @@ const Cart = () => {
                     mask="0000 0000 0000 0000"
                     lazy={false}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="cardCode">CVV</label>
                   <IMaskInput
                     type="text"
@@ -336,10 +327,10 @@ const Cart = () => {
                     lazy={false}
                     className={checkInputHasError('cardCode') ? 'error' : ''}
                   />
-                </InputGroup>
+                </S.InputGroup>
               </div>
               <div className="row-inputs">
-                <InputGroup>
+                <S.InputGroup>
                   <label htmlFor="expiresMonth">Mês de vencimento</label>
                   <IMaskInput
                     type="text"
@@ -356,8 +347,8 @@ const Cart = () => {
                       checkInputHasError('expiresMonth') ? 'error' : ''
                     }
                   />
-                </InputGroup>
-                <InputGroup style={{ width: '100%' }}>
+                </S.InputGroup>
+                <S.InputGroup style={{ width: '100%' }}>
                   <label htmlFor="expiresYear">Ano de vencimento</label>
                   <IMaskInput
                     type="text"
@@ -372,21 +363,21 @@ const Cart = () => {
                     lazy={false}
                     className={checkInputHasError('expiresYear') ? 'error' : ''}
                   />
-                </InputGroup>
+                </S.InputGroup>
               </div>
-              <CartButtonGroup>
-                <CartButton type="submit" disabled={isLoading}>
+              <S.CartButtonGroup>
+                <S.CartButton type="submit" disabled={isLoading}>
                   {isLoading ? 'Processando pedido...' : 'Finalizar Pagamento'}
-                </CartButton>
-                <CartButton type="button" onClick={() => setStep('delivery')}>
+                </S.CartButton>
+                <S.CartButton type="button" onClick={() => setStep('delivery')}>
                   Voltar para a edição de endereço
-                </CartButton>
-              </CartButtonGroup>
-            </PaymentForm>
+                </S.CartButton>
+              </S.CartButtonGroup>
+            </S.PaymentForm>
           )}
 
           {step === 'success' && (
-            <SuccessMessageContainer>
+            <S.SuccessMessageContainer>
               <h4>Pedido realizado - {orderId}</h4>
               <p>
                 Estamos felizes em informar que seu pedido já está em processo
@@ -405,7 +396,7 @@ const Cart = () => {
                 Esperamos que desfrute de uma deliciosa e agradável experiência
                 gastronômica. Bom apetite!
               </p>
-              <CartButton
+              <S.CartButton
                 type="button"
                 onClick={() => {
                   setStep('cart')
@@ -413,12 +404,12 @@ const Cart = () => {
                 }}
               >
                 Concluir
-              </CartButton>
-            </SuccessMessageContainer>
+              </S.CartButton>
+            </S.SuccessMessageContainer>
           )}
         </form>
-      </SideBar>
-    </CartContainer>
+      </S.SideBar>
+    </S.CartContainer>
   )
 }
 
