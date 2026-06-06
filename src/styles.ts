@@ -5,6 +5,7 @@ export const Colors = {
   branco: '#FFFFFF',
   bege: '#FFEBD9',
   salmao: '#E66767',
+  black: '#4b4b4b',
 }
 
 export const GlobalStyle = createGlobalStyle`

@@ -23,6 +23,12 @@ export const CartContainer = styled.div`
   &.is-open {
     display: flex;
   }
+
+  h4 {
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: ${Colors.bege};
+  }
 `
 
 export const SideBar = styled.aside`
@@ -31,6 +37,11 @@ export const SideBar = styled.aside`
   padding: 40px 16px 0 16px;
   max-width: 360px;
   width: 100%;
+
+  p {
+    color: ${Colors.branco};
+    text-align: center;
+  }
 `
 export const CartItem = styled.li`
   display: flex;
@@ -69,6 +80,7 @@ export const CartItem = styled.li`
       height: 16px;
       margin-left: 210px;
       object-fit: cover;
+      cursor: pointer;
     }
   }
 `
@@ -81,6 +93,31 @@ export const TotalPrice = styled.div`
   color: ${Colors.bege};
 `
 
+export const DeliveryForm = styled.div`
+  .row-inputs {
+    display: flex;
+    gap: 34px;
+  }
+`
+export const PaymentForm = styled.div`
+  .row-inputs {
+    display: flex;
+    gap: 34px;
+  }
+
+  .cardNumberInput {
+    width: 228px;
+  }
+`
+
+export const CartButtonGroup = styled.div`
+  margin-top: 24px;
+
+  button:nth-child(2) {
+    margin-top: 8px;
+  }
+`
+
 export const CartButton = styled.button`
   height: 24px;
   width: 100%;
@@ -91,4 +128,43 @@ export const CartButton = styled.button`
   font-weight: bold;
   border: none;
   cursor: pointer;
+`
+
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  width: 100%;
+
+  label {
+    color: ${Colors.bege};
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  input {
+    background-color: ${Colors.bege};
+    border: 1px solid ${Colors.bege};
+    height: 32px;
+    padding: 0 8px;
+    color: ${Colors.black};
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+
+    &.error {
+      border: 2px solid red;
+    }
+  }
+`
+
+export const SuccessMessageContainer = styled.div`
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 24px;
+    text-align: left;
+    color: ${Colors.bege};
+  }
 `
