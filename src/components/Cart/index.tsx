@@ -159,8 +159,8 @@ const Cart = () => {
               ) : (
                 <>
                   <ul>
-                    {items.map((item) => (
-                      <S.CartItem key={item.id}>
+                    {items.map((item, index) => (
+                      <S.CartItem key={index}>
                         <img src={item.foto} alt={item.nome} />
                         <div>
                           <h3>{item.nome}</h3>
@@ -168,7 +168,7 @@ const Cart = () => {
                             R$ {item.preco.toFixed(2).replace('.', ',')}
                           </span>
                           <img
-                            onClick={() => dispatch(remove(item.id))}
+                            onClick={() => dispatch(remove(index))}
                             src={deleteIcon}
                             alt="Remover produto"
                           />
