@@ -27,7 +27,6 @@ export const CartContainer = styled.div`
   h4 {
     margin-bottom: 16px;
     font-size: 16px;
-    color: ${Colors.bege};
   }
 `
 
@@ -42,12 +41,15 @@ export const SideBar = styled.aside`
     color: ${Colors.branco};
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    max-width: 80%;
+  }
 `
 export const CartItem = styled.li`
   display: flex;
   background-color: ${Colors.bege};
-  border-bottom: 16px solid ${Colors.salmao};
-  padding: 8px 0;
+  margin-bottom: 16px;
   position: relative;
   padding: 8px;
 
@@ -56,16 +58,23 @@ export const CartItem = styled.li`
     width: 80px;
     height: 80px;
     margin-right: 8px;
+    flex-shrink: 0; /* Impede a imagem do prato de ser esmagada no celular */
   }
 
   div {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Faz a div ocupar o espaço restante */
+    min-width: 0; /* Evita que os textos internos estufem a div */
+    padding-right: 24px;
 
     h3 {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 16px;
       color: ${Colors.salmao};
+      white-space: normal; /* Força a quebra de linha do título na versão responsiva */
+      word-break: break-word; /* Para quebrar longas palavras, se necessário */
     }
 
     span {
@@ -78,12 +87,16 @@ export const CartItem = styled.li`
       display: block;
       width: 16px;
       height: 16px;
-      margin-left: 210px;
       object-fit: cover;
       cursor: pointer;
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      margin-left: 0;
     }
   }
 `
+
 export const TotalPrice = styled.div`
   display: flex;
   justify-content: space-between;
