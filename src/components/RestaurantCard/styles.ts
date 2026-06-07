@@ -66,6 +66,10 @@ export const RestaurantCardInfos = styled.div`
       height: 20px;
     }
   }
+
+  h3 {
+    font-family: Pacifico, sans-serif;
+  }
 `
 
 export const RestaurantCardDescription = styled.p`

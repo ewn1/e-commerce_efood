@@ -30,6 +30,7 @@ export const Logo = styled.img`
 export const Titulo = styled.h1`
   font-size: 36px;
   font-weight: bold;
+  font-family: Pacifico, sans-serif;
   color: ${Colors.salmao};
   margin-top: 80px;
   text-align: center;

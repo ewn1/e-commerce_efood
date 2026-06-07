@@ -29,6 +29,7 @@ export const ProductCardContainer = styled.div`
 export const ProductCardTitle = styled.h3`
   margin-top: 8px;
   font-weight: bold;
+  font-family: Pacifico, sans-serif;
 `
 
 export const ProductCardDescription = styled.p`
